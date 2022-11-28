@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="login">
+        <form [formGroup]="form">
+        <h1><i class='bx bx-user'style='color:#16a474'></i> </h1>
+    
+        <label><i class='bx bxl-gmail' style='color:#16a474'></i>:</label>
+        <input type="email" placeholder="email id" formControlName="email" ><br><br>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+        <div class=valid *ngIf="email.errors?.['required']"> Invalid email id. </div>
+        <div *ngIf="!email.errors?.['required'] && email.errors?.['emailValidator']"> Invalid email format.</div>
+        </div>
+    
+        <label><i class='bx bxs-lock' style='color:#16a474'></i>:</label>
+        <input type="password" placeholder="password" formControlName="password"><br><br>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+        <div class=valid *ngIf="password.errors?.['required']">password is required.</div>
+        </div>
+        
+
+        <span>forgot password?</span>
+
+        <button (click)="login()"><i>login</i></button>
+        
+        
+   </form>
+
+   <p> Not a member? <a routerLink="/signup"> <i>Signup Now</i></a></p>
+</div>
+
+</body>
+</html>
